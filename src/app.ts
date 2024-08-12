@@ -29,6 +29,7 @@ import {
 
 import { argName, colName } from "./drivers/utlis";
 import { Driver as Sqlite3Driver } from "./drivers/better-sqlite3";
+import { Driver as BunSqlite3Driver } from "./drivers/bun-sqlite3";
 import { Driver as PgDriver } from "./drivers/pg";
 import { Driver as PostgresDriver } from "./drivers/postgres";
 import { Mysql2Options, Driver as MysqlDriver } from "./drivers/mysql2";
@@ -92,6 +93,9 @@ function createNodeGenerator(options: Options): Driver {
     }
     case "better-sqlite3": {
       return new Sqlite3Driver();
+    }
+    case "bun-sqlite3": {
+      return new BunSqlite3Driver();
     }
   }
   throw new Error(`unknown driver: ${options.driver}`);
